@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using TodoApi.Models;
 using TodoApi.BusinessService.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using TodoApi.ViewModel;
 
 namespace TodoApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class PersonController: ControllerBase
@@ -17,8 +20,9 @@ namespace TodoApi.Controllers
         public PersonController(IPersonBusinessService personBusinessService){
             _personBusinessService = personBusinessService;
         }
+        [AllowAnonymous]
         [HttpGet("[action]")]
-        public ActionResult GetAll(){
+        public ActionResult <PersonViewModel>GetAll(){
             try{
                 return Ok(_personBusinessService.GetAllPersons());
             }

@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using TodoApi.Models;
 using TodoApi.BusinessService.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using TodoApi.ViewModel;
 
 namespace TodoApi.Controllers
 {
@@ -19,8 +20,9 @@ namespace TodoApi.Controllers
         public UserController(IUserBusinessService userBusinessService){
             _userBusinessService = userBusinessService;
         }
+        [AllowAnonymous]
         [HttpGet("[action]")]
-        public ActionResult <User>GetAll(){
+        public ActionResult <UserViewModel>GetAll(){
             try{
                 return Ok(_userBusinessService.GetAllUser());
             }
