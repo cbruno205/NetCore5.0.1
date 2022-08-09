@@ -35,6 +35,7 @@ namespace TodoApi.Controllers
             var CreateUser = _personBusinessService.Create(person);
             return Ok(CreateUser);
         }
+        [AllowAnonymous]
         [HttpPut("[action]")]
         public ActionResult Update(int id,Person person){
             var UpdateUser = _personBusinessService.Update(id, person);

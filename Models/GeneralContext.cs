@@ -12,5 +12,6 @@ namespace TodoApi.Models
         public DbSet<User> user { get; set; }
         public DbSet<Person> Person {get; set;}
         public DbSet<City> City {get; set;}
+        public DbSet<SaveFile> SaveFile {get; set;}
     }
 }

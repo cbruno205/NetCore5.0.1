@@ -24,7 +24,7 @@ namespace TodoApi.DataService
             return _context.Person.FirstOrDefault(e =>e.Id == person.Id);
         }
         public Person Update(int id, Person city){
-            var _person = _context.Person.FirstOrDefault(e=>e.Id == city.Id);
+            var _person = _context.Person.FirstOrDefault(e=>e.Id == id);
             _person.DNI = city.DNI;
             _context.Entry(_person).State = EntityState.Modified;
             _context.SaveChanges();
